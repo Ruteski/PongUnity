@@ -19,37 +19,42 @@ public class RaqueteController : MonoBehaviour
     // Update is called once per frame
     void Update() {
 
+        //velocidade final
+        float deltaVelocidade = velocidade * Time.deltaTime;
+
+        minhaPosicao.y = meuY;
+        transform.position = minhaPosicao;
+
         if (gameObject.tag == "Player1") {
             if (Input.GetKey(KeyCode.UpArrow)) {
                 //meuY += 0.005f;
 
                 //verifica o limite da tela
-                if (meuY < meuLimite) {
-                    //deltaTime retorna o tempo que leva para ir de um frame ate o proximo frame
-                    meuY += velocidade * Time.deltaTime; // usando o deltaTime pra manter a msm velocidade em diferentes FPS
-                }
+                //deltaTime retorna o tempo que leva para ir de um frame ate o proximo frame
+                meuY += deltaVelocidade; // usando o deltaTime pra manter a msm velocidade em diferentes FPS
             }
 
-            if (Input.GetKey(KeyCode.DownArrow) && (meuY > -meuLimite)) {
+            if (Input.GetKey(KeyCode.DownArrow)) {
                 //meuY -= 0.005f;
 
                 //deltaTime retorna o tempo que leva para ir de um frame ate o proximo frame
-                meuY -= velocidade * Time.deltaTime; // usando o deltaTime pra manter a msm velocidade em diferentes FPS
+                meuY -= deltaVelocidade; // usando o deltaTime pra manter a msm velocidade em diferentes FPS
             }
         } else {
             if (Input.GetKey(KeyCode.W)) {
-                if (meuY < meuLimite) {
-                    meuY += velocidade * Time.deltaTime;
-                }
+                meuY += deltaVelocidade;
             }
 
-            if (Input.GetKey(KeyCode.S) && (meuY > -meuLimite)) {
-                meuY -= velocidade * Time.deltaTime;
+            if (Input.GetKey(KeyCode.S)) {
+                meuY -= deltaVelocidade;
             }
         }
 
-        minhaPosicao.y = meuY;
-        transform.position = minhaPosicao;
+        if (meuY < -meuLimite) {
+            meuY = -meuLimite;
+        } else if (meuY > meuLimite) {
+            meuY = meuLimite;
+        }
     }
 
 }
