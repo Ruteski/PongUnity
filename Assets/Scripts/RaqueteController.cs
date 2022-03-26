@@ -52,7 +52,9 @@ public class RaqueteController : MonoBehaviour
 
         if (meuY < -meuLimite) {
             meuY = -meuLimite;
-        } else if (meuY > meuLimite) {
+        } 
+        
+        if (meuY > meuLimite) {
             meuY = meuLimite;
         }
     }
