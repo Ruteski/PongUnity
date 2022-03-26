@@ -341,6 +341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meuRB: {fileID: 1379447369}
+  minhaVelocidade: {x: -2, y: 0}
 --- !u!1 &1421487529
 GameObject:
   m_ObjectHideFlags: 0
