@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meuRB: {fileID: 1379447369}
-  minhaVelocidade: {x: -2, y: 0}
+  velocidade: 5
 --- !u!1 &1421487529
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +438,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db176aecabeafb45836bef3b2da7949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meuY: 0
   velocidade: 7
   meuLimite: 3.5
 --- !u!61 &1421487533

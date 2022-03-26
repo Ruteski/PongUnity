@@ -5,7 +5,7 @@ using UnityEngine;
 public class RaqueteController : MonoBehaviour
 {
     private Vector3 minhaPosicao;
-    public float meuY;
+    private float meuY;
     public float velocidade = 7f;
     public float meuLimite = 3.5f;
 

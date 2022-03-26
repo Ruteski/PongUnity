@@ -5,11 +5,15 @@ using UnityEngine;
 public class BolaController : MonoBehaviour
 {
     public Rigidbody2D meuRB;
-    public Vector2 minhaVelocidade;
+    private Vector2 minhaVelocidade;
+    public float velocidade = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
+        //passando a velocidade para a minha velocidade
+        minhaVelocidade.x = -velocidade;
+
         //adicionando velocidade para a esquerda
         meuRB.velocity = minhaVelocidade;
     }
