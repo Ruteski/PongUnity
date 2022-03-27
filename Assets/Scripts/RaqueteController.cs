@@ -9,6 +9,12 @@ public class RaqueteController : MonoBehaviour
     public float velocidade = 7f;
     public float meuLimite = 3.5f;
 
+    //variavel para checar se ele deve ser controlado pela ia
+    public bool automatico = false;
+
+    //pegando a posicao da bola
+    public Transform transformBola;
+
     // Start is called before the first frame update
     void Start() 
     {
@@ -25,38 +31,41 @@ public class RaqueteController : MonoBehaviour
         minhaPosicao.y = meuY;
         transform.position = minhaPosicao;
 
-        if (gameObject.tag == "Player1") {
-            if (Input.GetKey(KeyCode.UpArrow)) {
-                //meuY += 0.005f;
+        if (!automatico) {
+            if (gameObject.tag == "Player1") {
+                if (Input.GetKey(KeyCode.UpArrow)) {
+                    //meuY += 0.005f;
 
-                //verifica o limite da tela
-                //deltaTime retorna o tempo que leva para ir de um frame ate o proximo frame
-                meuY += deltaVelocidade; // usando o deltaTime pra manter a msm velocidade em diferentes FPS
-            }
+                    //verifica o limite da tela
+                    //deltaTime retorna o tempo que leva para ir de um frame ate o proximo frame
+                    meuY += deltaVelocidade; // usando o deltaTime pra manter a msm velocidade em diferentes FPS
+                }
 
-            if (Input.GetKey(KeyCode.DownArrow)) {
-                //meuY -= 0.005f;
+                if (Input.GetKey(KeyCode.DownArrow)) {
+                    //meuY -= 0.005f;
 
-                //deltaTime retorna o tempo que leva para ir de um frame ate o proximo frame
-                meuY -= deltaVelocidade; // usando o deltaTime pra manter a msm velocidade em diferentes FPS
+                    //deltaTime retorna o tempo que leva para ir de um frame ate o proximo frame
+                    meuY -= deltaVelocidade; // usando o deltaTime pra manter a msm velocidade em diferentes FPS
+                }
+            } else {
+                if (Input.GetKey(KeyCode.W)) {
+                    meuY += deltaVelocidade;
+                }
+
+                if (Input.GetKey(KeyCode.S)) {
+                    meuY -= deltaVelocidade;
+                }
             }
         } else {
-            if (Input.GetKey(KeyCode.W)) {
-                meuY += deltaVelocidade;
-            }
-
-            if (Input.GetKey(KeyCode.S)) {
-                meuY -= deltaVelocidade;
-            }
+            meuY = transformBola.position.y;
         }
 
         if (meuY < -meuLimite) {
             meuY = -meuLimite;
-        } 
-        
+        }
+
         if (meuY > meuLimite) {
             meuY = meuLimite;
         }
     }
-
 }
