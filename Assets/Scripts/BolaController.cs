@@ -9,6 +9,8 @@ public class BolaController : MonoBehaviour
     private Vector2 minhaVelocidade;
     public float velocidade = 5f;
     public float limiteHorizontal = 12f;
+    public AudioClip boing;
+    public Transform transformCamera;
 
     private Vector2 DirecaoInicial(float vel1, float vel2) {
         return new Vector2 (vel1, vel2);
@@ -43,5 +45,10 @@ public class BolaController : MonoBehaviour
             //recarrega a cena
             SceneManager.LoadScene("Jogo");
         }
+    }
+
+    //evento de colisao
+    private void OnCollisionEnter2D(Collision2D collision) {
+        AudioSource.PlayClipAtPoint(boing, transformCamera.position);
     }
 }
