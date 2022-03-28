@@ -33,7 +33,7 @@ public class RaqueteController : MonoBehaviour
 
         if (!automatico) {
             if (gameObject.tag == "Player1") {
-                if (Input.GetKey(KeyCode.UpArrow)) {
+                if (Input.GetKey(KeyCode.W)) {
                     //meuY += 0.005f;
 
                     //verifica o limite da tela
@@ -41,18 +41,18 @@ public class RaqueteController : MonoBehaviour
                     meuY += deltaVelocidade; // usando o deltaTime pra manter a msm velocidade em diferentes FPS
                 }
 
-                if (Input.GetKey(KeyCode.DownArrow)) {
+                if (Input.GetKey(KeyCode.S)) {
                     //meuY -= 0.005f;
 
                     //deltaTime retorna o tempo que leva para ir de um frame ate o proximo frame
                     meuY -= deltaVelocidade; // usando o deltaTime pra manter a msm velocidade em diferentes FPS
                 }
             } else {
-                if (Input.GetKey(KeyCode.W)) {
+                if (Input.GetKey(KeyCode.UpArrow)) {
                     meuY += deltaVelocidade;
                 }
 
-                if (Input.GetKey(KeyCode.S)) {
+                if (Input.GetKey(KeyCode.DownArrow)) {
                     meuY -= deltaVelocidade;
                 }
             }
