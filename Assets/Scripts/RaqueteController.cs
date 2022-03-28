@@ -10,7 +10,7 @@ public class RaqueteController : MonoBehaviour
     public float meuLimite = 3.5f;
 
     //variavel para checar se ele deve ser controlado pela ia
-    public bool automatico = false;
+    public bool automatico = true;
 
     //pegando a posicao da bola
     public Transform transformBola;
@@ -48,6 +48,10 @@ public class RaqueteController : MonoBehaviour
                     meuY -= deltaVelocidade; // usando o deltaTime pra manter a msm velocidade em diferentes FPS
                 }
             } else {
+                if (Input.GetKey(KeyCode.Return)) {
+                    automatico = true;
+                }
+
                 if (Input.GetKey(KeyCode.UpArrow)) {
                     meuY += deltaVelocidade;
                 }
@@ -57,6 +61,12 @@ public class RaqueteController : MonoBehaviour
                 }
             }
         } else {
+            //tirando o player do automatico
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow)) {
+                automatico = false;
+            }
+
+
             //funcao matematica
             //linear interpolation
             //ir de um lugar para outro de forma suave
