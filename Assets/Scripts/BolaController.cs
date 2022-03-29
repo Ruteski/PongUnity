@@ -62,6 +62,6 @@ public class BolaController : MonoBehaviour
 
     //evento de colisao
     private void OnCollisionEnter2D(Collision2D collision) {
-        AudioSource.PlayClipAtPoint(boing, transformCamera.position);
+        AudioSource.PlayClipAtPoint(boing, transformCamera.position, 0.3f);
     }
 }

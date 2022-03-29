@@ -6,7 +6,7 @@ public class RaqueteController : MonoBehaviour
 {
     private Vector3 minhaPosicao;
     private float meuY;
-    public float velocidade = 7f;
+    public float velocidade = 10f;
     public float meuLimite = 3.5f;
 
     //variavel para checar se ele deve ser controlado pela ia
@@ -71,7 +71,7 @@ public class RaqueteController : MonoBehaviour
             //linear interpolation
             //ir de um lugar para outro de forma suave
             //transformar um valor em outro de forma suave
-            meuY = Mathf.Lerp(meuY, transformBola.position.y, 0.01f);
+            meuY = Mathf.Lerp(meuY, transformBola.position.y, 0.05f);
 
 
             //se meu valor é de 0 e o da bola é 10 a diferença entre eles é de 10, 10% de 10 é 1
