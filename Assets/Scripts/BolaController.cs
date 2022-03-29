@@ -22,21 +22,6 @@ public class BolaController : MonoBehaviour
     void Start()
     {
 
-        int direcao = Random.Range(0, 4);
-
-        // escolhe a direção inicial da bola
-        if (direcao == 0) { // superior direita
-            minhaVelocidade = DirecaoInicial(velocidade, velocidade);
-        }else if (direcao == 1) { // superior esquerda
-            minhaVelocidade = DirecaoInicial(-velocidade, velocidade);
-        }else if (direcao == 2) { // inferior esquerda
-            minhaVelocidade = DirecaoInicial(-velocidade, -velocidade);
-        } else { // inferior direita
-            minhaVelocidade = DirecaoInicial(velocidade, -velocidade);
-        }
-
-        //adicionando velocidade para a esquerda
-        meuRB.velocity = minhaVelocidade;
     }
 
     // Update is called once per frame
@@ -47,7 +32,25 @@ public class BolaController : MonoBehaviour
         delay -= Time.deltaTime;
 
         if (delay <= 0 && !jogoIniciado) { 
-            jogoIniciado = true;    
+            jogoIniciado = true;
+
+            //iniciando o jogo
+
+            int direcao = Random.Range(0, 4);
+
+            // escolhe a direção inicial da bola
+            if (direcao == 0) { // superior direita
+                minhaVelocidade = DirecaoInicial(velocidade, velocidade);
+            } else if (direcao == 1) { // superior esquerda
+                minhaVelocidade = DirecaoInicial(-velocidade, velocidade);
+            } else if (direcao == 2) { // inferior esquerda
+                minhaVelocidade = DirecaoInicial(-velocidade, -velocidade);
+            } else { // inferior direita
+                minhaVelocidade = DirecaoInicial(velocidade, -velocidade);
+            }
+
+            //adicionando velocidade para a esquerda
+            meuRB.velocity = minhaVelocidade;
         }
 
         //checa se a bola saiu da cena
