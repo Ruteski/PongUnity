@@ -11,6 +11,8 @@ public class BolaController : MonoBehaviour
     public float limiteHorizontal = 12f;
     public AudioClip boing;
     public Transform transformCamera;
+    public float delay = 2f;
+    public bool jogoIniciado = false;
 
     private Vector2 DirecaoInicial(float vel1, float vel2) {
         return new Vector2 (vel1, vel2);
@@ -40,6 +42,14 @@ public class BolaController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //iniciando a bola com um delay
+        //diminuindo o valor do delay
+        delay -= Time.deltaTime;
+
+        if (delay <= 0 && !jogoIniciado) { 
+            jogoIniciado = true;    
+        }
+
         //checa se a bola saiu da cena
         if (transform.position.x <= -limiteHorizontal || transform.position.x >= limiteHorizontal) {
             //recarrega a cena
